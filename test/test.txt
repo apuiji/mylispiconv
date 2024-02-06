@@ -1,0 +1,5 @@
+(= OGL (dlopen '../mylispopengl/linuxdbg/opengl.so'))
+(if OGL (output stdout "fuck") (output stdout (dlerror)))
+(= window ((. OGL "openWindow") 800 600 "test"))
+(if window (output stdout "fuck") (output stdout "shit"))
+(getc stdin)
