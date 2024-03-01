@@ -1,4 +1,4 @@
 DEPS := ../mylisp ../myccutils
-LIBS := mylisp
+LIBS := mylisp tcmalloc
 OBJS := main
 PROD := mylisp
