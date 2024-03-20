@@ -35,7 +35,7 @@ int main(int argc, char **argv, char **envp) {
     try {
       ast::Ast {}(a, filesystem::path(indexFile));
     } catch (ast::AstBad bad) {
-      cerr << bad.what;
+      cerr << bad.code;
       return 0;
     }
     string s;
