@@ -1,7 +1,6 @@
 #include<filesystem>
 #include<iostream>
 #include"myccutils/xyz.hh"
-#include"mylisp/ast_load.hh"
 #include"mylisp/compile.hh"
 #include"mylisp/eval.hh"
 #include"mylisp/rte.hh"
@@ -31,7 +30,7 @@ int main(int argc, char **argv, char **envp) {
   }
   rte::init();
   if (indexFile) {
-    ast::UNode a;
+    ast::UNodes a;
     try {
       ast::Ast {}(a, filesystem::path(indexFile));
     } catch (ast::AstBad bad) {
@@ -39,7 +38,7 @@ int main(int argc, char **argv, char **envp) {
       return 0;
     }
     string s;
-    compile(s, a);
+    compile(s, a.begin(), a.end());
     {
       unique_ptr<ValueStack> k(new(mainCoroutineValuekSize) ValueStack);
       rte::coroutines.push_back(Coroutine(std::move(k)));
